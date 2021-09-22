@@ -10,33 +10,39 @@ class EmpWage {
   static const int fullTime = 1;
   static const int partTime = 2;
   static int ratePerHr = 20;
-  static int TotalDays = 30;
+  static int TotalDays = 20;
   int salary = 0;
   int empHrs = 0;
   int totalSalary = 0;
-
-  int empCheck = new Random().nextInt(3);
+  int day = 0;
+  int noOfHrs = 0;
 
   void display() {
-    for (int count = 1; count <= TotalDays; count++) {
+    int empCheck = new Random().nextInt(3);
+
+    while (day < TotalDays && noOfHrs <= 100) {
       switch (empCheck) {
         case fullTime:
-          int empHrs = 8;
+          empHrs = 8;
           salary = empHrs * ratePerHr;
           break;
 
         case partTime:
-          int empHrs = 4;
+          empHrs = 4;
           salary = empHrs * ratePerHr;
           break;
 
         default:
-          int empHrs = 0;
+          empHrs = 0;
           salary = empHrs * ratePerHr;
       }
 
       totalSalary += salary;
+      noOfHrs += empHrs;
+      day++;
     }
+    print("Total Hrs: $noOfHrs");
+
     print("Total Employee Wage: $totalSalary");
   }
 }
